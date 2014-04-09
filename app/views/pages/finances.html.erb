@@ -1,0 +1,81 @@
+<div id="home">  
+  <div id="features">
+    <div class="container">
+
+      <div class="row header">
+        <div class="col-md-12">
+          <h2>Want to trade your Ether for Bitcoin ?</h2>
+          <p>Our exchange does this for you.</p>
+        </div>
+      </div>
+
+      <div class="row feature">
+        <div class="col-md-7 info">
+          <div class="box_user_details">
+            <h4>User Details</h4>
+            <h5>Server Balance</h5>
+            <%= btcserver.getbalance current_user.id.to_s, 0 %>
+            <h5>DataBase Balance</h5>
+            <%= current_user.check_balance %>
+
+            <h5>Recent transactions</h5>
+
+            <table class="table table-striped">
+              <tr>
+                <th>Address</th>
+                <th>Credit</th>
+                <th>Debit</th>
+              </tr>
+              <% current_user.transactions.order(created_at: :desc).first(3).each do |t| %>
+                <tr>
+                  <td><%= link_to t.address, transaction_path(t) %></td>
+                  <td><%= t.credit %></td>
+                  <td> <%= t.debit %></td>
+                </tr>
+              <% end %>
+            </table>
+
+          </div>
+        </div>
+
+        <div class="col-md-5 info">
+          <div class="box">
+            <h5>Generate new Adress</h5>
+            <p><strong>Last Address:</strong></p>
+            <% if current_user.addresses.present? %>
+              <% if Bitcoin::valid_address?(current_user.addresses.last.address) == true %>
+                <div id="new_address"><%= current_user.addresses.last.address %></div><br>
+              <% else %>
+                <h5 id="error"> Invalid Address </h5>
+              <% end %>
+            <% end %>
+            <%= button_to "Generate new Adress", addresses_path, class: "button", data: {disable_with: "Generating..."}  %>
+
+            <h6><%= link_to 'List of all Addresses', addresses_path %><h6>
+          
+          </div>
+        </div>
+
+        <div class="col-md-5 info">
+          <div class="box">
+            <h5>Send BTC to Adress</h5>
+            <%= flash[:notice] %>
+            <%= form_for(@transaction) do |f| %>
+              <div class="field">
+                <%= f.text_field :address, placeholder: "BTC Address" %>
+              </div><br>
+              <div class="field">
+                <%= f.text_field :debit, placeholder: "Amount" %>
+              </div><br>
+              <div class="actions">
+                <%= f.submit "Send Coins", id: "button_id", class: "button", data: {disable_with: "Submitting..."} %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>    
+  </div>
+</div>

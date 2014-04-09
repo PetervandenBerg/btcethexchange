@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+
+  <div id="home">  
+    <div id="features">
+      <div class="container">
+        <div class="row header">
+          <div class="col-md-12">
+            <h2>Want to trade your Ether for Bitcoin ?</h2>
+            <p>Our exchange does this for you.</p>
+          </div>
+        </div>
+
+        <%= render 'layouts/chart' %>
+        <%= render 'layouts/order' %>
+
+      </div>    
+    </div>
+  </div>
+
+<% else %>
+
+  <div id="home">  
+    <div id="features">
+      <div class="container">
+        <div class="row header">
+          <div class="col-md-12">
+            <h2>Want to trade your Ether for Bitcoin ?</h2>
+            <p>Our exchange does this for you.</p>
+
+            <%= render 'layouts/chart' %>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+<% end %>

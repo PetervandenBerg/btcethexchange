@@ -1,0 +1,50 @@
+<div id="signup" style="">
+  <div class="container">
+    <div class="row header">
+      <div class="col-md-12">
+        <h4>Sign in.</h4>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrapper clearfix">
+                <div class="formy">
+                    <div class="row">
+                        <div class="col-md-12">
+                          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <%= f.email_field :email, :autofocus => true, class: "form-control", id:"email" %>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <%= f.password_field :password, class: "form-control", id: "password" %>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                                    </label>
+                                </div>
+                                <div class="submit">
+                                    <%= f.submit "Sign in", class: "button" %>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>                      
+                </div>
+            </div>
+            <div class="already-account">
+              <%= link_to "Don't have an Account?", new_user_registration_path %>
+            </div>
+        </div>
+      </div>
+  </div>
+
+  <script type="text/javascript">
+      $(function () {
+          $(".already-account a").popover();
+          $(".already-account a").popover('show');
+      });
+  </script>
+
+</div>

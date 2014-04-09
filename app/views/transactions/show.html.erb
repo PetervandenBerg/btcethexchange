@@ -1,0 +1,30 @@
+<div id="home">  
+  <div id="features">
+    <div class="container">
+
+      <div class="row header">
+        <div class="col-md-12">
+          <h2>Want to trade your Ether for Bitcoin ?</h2>
+          <p>Our exchange does this for you.</p>
+        </div>
+      </div>
+
+      <div class="row feature">
+        <div class="col-md-12 info">
+          <div class="box">
+            <h4>Transaction Details</h4>
+            <% t = btcserver.gettransaction @transaction.transaction_hash %>
+            <ul>  
+              <li>Send to Address: <%= t["details"][0]["address"] %></li>
+              <li>Category: <%= t["details"][0]["category"] %></li>
+              category klopt nog niet overal.
+              <li>Amount: <%= t["details"][0]["amount"] %></li>
+              <li>Fee: <%=  t["fee"] %></li>
+              <li>Confirmations: <%= t["confirmations"] %></li>
+            </ul>
+  
+          </div>
+        </div>
+    </div>    
+  </div>
+</div>

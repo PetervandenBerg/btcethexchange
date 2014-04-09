@@ -1,0 +1,87 @@
+<div class="row header">
+  <div class="col-md-12">
+    <h2>Want to place a buy or selling order ?</h2>
+  </div>
+</div>
+
+<div class="row feature">
+  <div class="col-md-6 info">
+    <div class="box">
+      <div class="row">
+        <div class="col-md-12 tabs-wrapper">
+          <ul class="nav nav-tabs">
+              <li class=""><a href="#messages" data-toggle="tab">Buy BTC/Ether</a></li>
+              <li><a href="#settings" data-toggle="tab">Buy Ether/BTC</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade" id="messages">
+              <div class="col-md-12 info">
+              <h5>Buy BTC/Ether</h5>
+                <%= simple_form_for @order do |f| %>
+                  <%= f.input :debit, label: false, placeholder: "Amount", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.input :exchange_rate, label: false, placeholder: "Price", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.hidden_field :trade_type, value: "buy_btc_eth" %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="settings">
+              <div class="col-md-12 info">
+              <h5>Buy Ether/BTC</h5>
+                <%= simple_form_for @order do |f| %>
+                  <%= f.input :debit, label: false, placeholder: "Amount", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.input :exchange_rate, label: false, placeholder: "Price", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.hidden_field :trade_type, value: "buy_eth_btc" %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 info">
+    <div class="box">
+      <div class="row">
+        <div class="col-md-12 tabs-wrapper">
+          <ul class="nav nav-tabs">
+              <li class=""><a href="#sell_btc_ether" data-toggle="tab">Sell BTC/Ether</a></li>
+              <li><a href="#sell_eth_btc" data-toggle="tab">Sell Ether/BTC</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade" id="sell_btc_ether">
+              <div class="col-md-12 info">
+              <h5>Sell BTC/Ether</h5>
+                <%= simple_form_for @order do |f| %>
+                  <%= f.input :debit, label: false, placeholder: "Amount", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.input :exchange_rate, label: false, placeholder: "Price", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.hidden_field :trade_type, value: "sell_btc_eth"%>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="sell_eth_btc">
+              <div class="col-md-12 info">
+              <h5>Sell Ether/BTC</h5>
+                <%= simple_form_for @order do |f| %>
+                  <%= f.input :debit, label: false, placeholder: "Amount", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.input :exchange_rate, label: false, placeholder: "Price", :input_html => { :style=> 'width: 100px', style: 'margin-bottom: 10px'} %>
+                  <%= f.hidden_field :trade_type, value: "sell_eth_btc" %>
+                  <%= f.button :submit %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

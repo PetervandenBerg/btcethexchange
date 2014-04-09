@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  credit: 1
+  debit: 1
+  type: 
+  order_id: 1
+
+two:
+  credit: 1
+  debit: 1
+  type: 
+  order_id: 1

@@ -1,0 +1,41 @@
+<div id="signup" style="">
+  
+  <div class="container">
+    <div class="row header">
+      <div class="col-md-12">
+        <h4>Gamble all of your money.</h4>
+      </div>
+    </div>
+
+    <h5><%= current_user.check_server_balance %></h5>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrapper clearfix">
+          <div class="formy">
+            <div class="row">
+              <div class="col-md-12">
+                <%= flash[:notice] %>
+                <%= simple_form_for @gamble do |f| %>
+                  <%= f.error_notification %>
+                  <div class="inputs">
+                    <%= f.text_field :amount, label: false, class: "form-control", placeholder: 'Amount you wish to gamble' %>
+                    <%= f.input :currency_type, class: "form-select", label: false, collection: [ "Ether", "Bitcoin"] %>
+                  </div>
+                  <div class="actions">
+                    <%= f.button :submit, "Gamble!", class: "button", data: {disable_with: "Gambling..."} %>
+                  </div>
+                <% end %>
+
+              </div>
+            </div>                      
+          </div>
+        </div>
+      </div>
+      <div class="already-account">
+
+      </div>
+    </div>
+  </div>
+
+</div>

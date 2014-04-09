@@ -1,0 +1,45 @@
+<header class="navbar navbar-inverse normal" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag("logo.png"), '/', class: "brand", method: :get %>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li class="navbar_item">
+              <%= link_to 'My Finance', pages_finances_path %>
+            </li>
+            <li class="navbar_item">
+              <%= link_to 'Gamble', gambles_path %>
+            </li>
+          <% end %>
+          <li class="navbar_item">
+            <%= link_to 'Status', pages_status_path %>
+          </li>
+          <li class="navbar_item">
+            <%= link_to 'About', pages_about_path %>
+          </li>
+          <li class="navbar_item">
+            <%= link_to 'Contact', pages_contact_path %>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right visible-md visible-lg">
+          <% if admin_signed_in? %>
+              <li><%= link_to "AdminLogout", destroy_admin_session_path, method: :delete %></li>
+          <% elsif user_signed_in? %>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+          <% else %>s
+            <li><%= link_to "Sign in", new_user_session_path %>
+            <li><%= link_to "Sign up", new_user_registration_path %>
+          <% end %>
+        </ul>
+    </nav>
+  </div>
+</header>
